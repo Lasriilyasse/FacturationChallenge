@@ -31,4 +31,12 @@ public class ClientController {
     public Client getClient(@PathVariable Long id) {
         return clientService.getClient(id);
     }
+
+    @PutMapping("/modifier/{id}")
+    public Client modifierClient(@PathVariable Long id, @RequestBody Client client) {
+        return clientService.modifierClient(id, client);
+    }
+
+    @PostMapping("supprimer/{id}")
+    public void supprimerClient(@PathVariable Long id) { clientService.supprimerClient(id); }
 }

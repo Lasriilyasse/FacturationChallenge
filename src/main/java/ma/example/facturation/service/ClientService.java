@@ -21,6 +21,17 @@ public class ClientService {
         return clientRepository.save(client);
     }
 
+    public Client modifierClient(Long id, Client clientDetails) {
+
+        Client client = clientRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Client non trouvé avec id : " + id));
+
+        client.setNom(clientDetails.getNom());
+        client.setEmail(clientDetails.getEmail());
+        client.setSiret(clientDetails.getSiret());
+
+        return clientRepository.save(client);
+    }
     public List<Client> listerClients() {
         return clientRepository.findAll();
     }
